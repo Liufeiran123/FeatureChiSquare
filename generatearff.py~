@@ -1,0 +1,35 @@
+import codecs
+import os
+
+
+df={}
+
+def garffrelation():
+  out_data=codecs.open("/home/lfr/svmfeature/arff.arff",'w','utf-8')
+  out_data.write("@relation 'claa'")
+  out_data.close()
+
+def garffatribute():
+  out_data=codecs.open("/home/lfr/svmfeature/arff.arff","a",'utf-8')
+  input_data=codecs.open("/home/lfr/svmfeature/features.txt","r",'utf-8')
+  for line in input_data.readlines():
+    w = line.split('\t')
+    df[w[0]] = 0.01
+  for k in df:
+    out_data.write("@attribute "+k+" numeric")
+  out_data.write("@attribute class numeric")
+  
+  out_data.close()
+  input_data.close()
+
+  
+def garffdata():
+  return 0
+
+
+if __name__ == '__main__':
+  garffrelation()
+  garffattribute()
+  garffdata()
+
+
